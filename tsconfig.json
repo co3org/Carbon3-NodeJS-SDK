@@ -3,6 +3,7 @@
     "outDir": "build",
     "baseUrl": ".",
     "incremental": false,
+    "declaration": true,
     "preserveConstEnums": true,
     "sourceMap": true,
     "inlineSources": true,
