@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../src/index.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;AAAA,0CAAwB;AACxB,yCAAuB;AACvB,2CAAyB","sourcesContent":["export * from './types';\nexport * from './dids';\nexport * from './tokens';\n"]}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../src/index.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;AAAA,0CAAwB;AACxB,yCAAuB;AACvB,2CAAyB","sourcesContent":["export * from './types';\nexport * from './dids';\nexport * from './tokens';\nexport { JWT, JwtCredentialPayload } from 'did-jwt-vc/lib/types';\n"]}
