@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.verifyVC = exports.createRevocationToken = exports.createToken = exports.CredentialStatus = void 0;
+exports.verifyVC = exports.createRevocationToken = exports.createToken = exports.createVC = exports.CredentialStatus = void 0;
 const secp256k1 = __importStar(require("@transmute/did-key-secp256k1"));
 const did_jwt_vc_1 = require("did-jwt-vc");
 const did_jwt_1 = require("did-jwt");
@@ -56,6 +56,7 @@ async function createVC(input) {
     const vcJwt = await (0, did_jwt_vc_1.createVerifiableCredentialJwt)(cred, issuer);
     return { vc: vcJwt, payload: cred };
 }
+exports.createVC = createVC;
 async function createToken(input) {
     const { issuerDID, toDID, internalID, amountCO2e, reference } = input;
     return createVC({

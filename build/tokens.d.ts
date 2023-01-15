@@ -6,6 +6,18 @@ export declare enum CredentialStatus {
     ACTIVE = "ACTIVE",
     REVOKED = "REVOKED"
 }
+export declare function createVC(input: {
+    issuerDID: TDIDdoc;
+    toDID: string;
+    id: string;
+    type: string[];
+    credentialSubject: {
+        [key: string]: any;
+    };
+}): Promise<{
+    vc: JWT;
+    payload: JwtCredentialPayload;
+}>;
 export declare function createToken(input: {
     issuerDID: TDIDdoc;
     toDID: string;

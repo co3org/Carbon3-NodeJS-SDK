@@ -10,7 +10,7 @@ export enum CredentialStatus {
   REVOKED = 'REVOKED',
 }
 
-async function createVC(input: {
+export async function createVC(input: {
   issuerDID: TDIDdoc;
   toDID: string;
   id: string;
