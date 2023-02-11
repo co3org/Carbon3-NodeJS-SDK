@@ -4,3 +4,4 @@ jest.config.ts
 tsconfig.json
 .prettierrc.json
 .eslintrc.json
+junit.xml
