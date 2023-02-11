@@ -1,0 +1,6 @@
+tests/
+.vscode/
+jest.config.ts
+tsconfig.json
+.prettierrc.json
+.eslintrc.json
