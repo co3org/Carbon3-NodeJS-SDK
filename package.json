@@ -1,6 +1,6 @@
 {
   "name": "carbon3-nodejs-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "build/index.js",
   "repository": "https://github.com/co3org/Carbon3-NodeJS-SDK",
   "author": "Ilya Nevolin <ilja.nevolin@gmail.com>",
