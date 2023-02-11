@@ -28,7 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createDIDKeypair = exports.adjustDID = exports.createDID = exports.SERVICE_TYPES = exports.DIDResolver = void 0;
 const crypto_1 = __importDefault(require("crypto"));
-const secp256k1 = __importStar(require("@transmute/did-key-secp256k1"));
+const ed25519 = __importStar(require("@transmute/did-key-ed25519"));
 const did_resolver_1 = require("did-resolver");
 const web_did_resolver_1 = __importDefault(require("web-did-resolver"));
 exports.DIDResolver = new did_resolver_1.Resolver({
@@ -40,7 +40,7 @@ var SERVICE_TYPES;
     SERVICE_TYPES["PARTNER"] = "carbon3 partner";
 })(SERVICE_TYPES = exports.SERVICE_TYPES || (exports.SERVICE_TYPES = {}));
 async function createDID() {
-    const doc = await secp256k1.generate({
+    const doc = await ed25519.generate({
         secureRandom: () => {
             return crypto_1.default.randomBytes(32);
         },
@@ -56,7 +56,7 @@ function adjustDID(didweb, did) {
 }
 exports.adjustDID = adjustDID;
 async function createDIDKeypair() {
-    return secp256k1.Secp256k1KeyPair.generate({
+    return ed25519.Ed25519KeyPair.generate({
         secureRandom: () => {
             return crypto_1.default.randomBytes(32);
         },

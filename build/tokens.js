@@ -24,7 +24,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.verifyVC = exports.createRevocationToken = exports.createToken = exports.createVC = exports.CredentialStatus = void 0;
-const secp256k1 = __importStar(require("@transmute/did-key-secp256k1"));
+const ed25519 = __importStar(require("@transmute/did-key-ed25519"));
 const did_jwt_vc_1 = require("did-jwt-vc");
 const did_jwt_1 = require("did-jwt");
 var CredentialStatus;
@@ -34,11 +34,11 @@ var CredentialStatus;
 })(CredentialStatus = exports.CredentialStatus || (exports.CredentialStatus = {}));
 async function createVC(input) {
     const { issuerDID, toDID, id, type, credentialSubject } = input;
-    const issuerKey = await secp256k1.Secp256k1KeyPair.from(issuerDID.keys[0]);
+    const issuerKey = await ed25519.Ed25519KeyPair.from(issuerDID.keys[0]);
     if (!issuerKey.privateKey)
         throw new Error('issuerKey.privateKey missing');
-    const signer = (0, did_jwt_1.ES256KSigner)(issuerKey.privateKey);
-    const issuer = { did: issuerDID.didDocument.id, signer };
+    const signer = (0, did_jwt_1.EdDSASigner)(issuerKey.privateKey);
+    const issuer = { did: issuerDID.didDocument.id, signer, alg: 'EdDSA' };
     const cred = {
         id,
         iss: issuerKey.controller,

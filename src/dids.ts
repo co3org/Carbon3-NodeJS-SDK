@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import * as secp256k1 from '@transmute/did-key-secp256k1';
+import * as ed25519 from '@transmute/did-key-ed25519';
 import { Resolver } from 'did-resolver';
 import webResolver from 'web-did-resolver';
 import { TDIDdoc } from './types';
@@ -14,7 +14,7 @@ export enum SERVICE_TYPES {
 }
 
 export async function createDID(): Promise<TDIDdoc> {
-  const doc = await secp256k1.generate({
+  const doc = await ed25519.generate({
     secureRandom: () => {
       return crypto.randomBytes(32);
     },
@@ -29,8 +29,8 @@ export function adjustDID(didweb: string, did: TDIDdoc) {
   return JSON.parse(str) as TDIDdoc;
 }
 
-export async function createDIDKeypair(): Promise<secp256k1.Secp256k1KeyPair> {
-  return secp256k1.Secp256k1KeyPair.generate({
+export async function createDIDKeypair(): Promise<ed25519.Ed25519KeyPair> {
+  return ed25519.Ed25519KeyPair.generate({
     secureRandom: () => {
       return crypto.randomBytes(32);
     },
